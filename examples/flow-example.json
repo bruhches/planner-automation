@@ -1,0 +1,61 @@
+{
+  "project": "Planner Automation - 12x36",
+  "note": "Exemplo sanitizado e documental. Não é um pacote importável do Power Automate.",
+  "trigger": {
+    "type": "Recurrence",
+    "frequency": "Day",
+    "interval": 1,
+    "timeZone": "<FUSO_HORARIO>"
+  },
+  "condition": {
+    "description": "Executa somente em datas da mesma paridade da DATA_BASE",
+    "expression": "@equals(mod(div(sub(ticks(formatDateTime(convertTimeZone(utcNow(),'UTC','<FUSO_HORARIO>'),'yyyy-MM-dd')),ticks('<DATA_BASE>')),864000000000),2),0)"
+  },
+  "onTrue": {
+    "tasks": [
+      {
+        "title": "TAREFA OPERACIONAL 08H",
+        "groupId": "<GROUP_ID>",
+        "planId": "<PLAN_ID>",
+        "bucketId": "<BUCKET_ID>",
+        "assignee": "<ASSIGNEE_EMAIL>",
+        "dueTime": "08:00:00",
+        "details": {
+          "description": "Descrição pública de exemplo.",
+          "checklist": [
+            "Verificação A",
+            "Verificação B",
+            "Registrar evidência quando aplicável"
+          ]
+        }
+      },
+      {
+        "title": "TAREFA OPERACIONAL 11H",
+        "groupId": "<GROUP_ID>",
+        "planId": "<PLAN_ID>",
+        "bucketId": "<BUCKET_ID>",
+        "assignee": "<ASSIGNEE_EMAIL>",
+        "dueTime": "11:00:00"
+      },
+      {
+        "title": "TAREFA OPERACIONAL 14H",
+        "groupId": "<GROUP_ID>",
+        "planId": "<PLAN_ID>",
+        "bucketId": "<BUCKET_ID>",
+        "assignee": "<ASSIGNEE_EMAIL>",
+        "dueTime": "14:00:00"
+      },
+      {
+        "title": "TAREFA OPERACIONAL 17H",
+        "groupId": "<GROUP_ID>",
+        "planId": "<PLAN_ID>",
+        "bucketId": "<BUCKET_ID>",
+        "assignee": "<ASSIGNEE_EMAIL>",
+        "dueTime": "17:00:00"
+      }
+    ]
+  },
+  "onFalse": {
+    "action": "No task is created"
+  }
+}

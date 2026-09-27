@@ -1,0 +1,19 @@
+# Power Automate exports privados
+*.zip
+exports/
+private/
+
+# Variáveis e segredos
+.env
+.env.*
+!.env.example
+
+# Sistema / IDE
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Temporários
+*.tmp
+*.log
